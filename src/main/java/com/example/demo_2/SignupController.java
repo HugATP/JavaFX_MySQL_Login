@@ -74,7 +74,7 @@ public class SignupController {
 
             int insertResult = statement.executeUpdate();
             if (insertResult > 0) {
-                signUpMessageLabel.setText("Hi, nice to meet you " + firstNameTextField.getText() + lastNameTextField.getText());
+                signUpMessageLabel.setText("Hi, nice to meet you " + firstNameTextField.getText() + ' ' + lastNameTextField.getText());
             }
             statement.close();
             connection.close();

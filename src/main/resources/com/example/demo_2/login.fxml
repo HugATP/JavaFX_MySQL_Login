@@ -71,7 +71,7 @@
             </Label>
             <TextField fx:id="usernameTextField" layoutX="165.0" layoutY="130.0" prefHeight="30.0" prefWidth="150.0" promptText="Username">
                <font>
-                  <Font size="15.0" />
+                  <Font size="14.0" />
                </font></TextField>
             <Button fx:id="signInButton" layoutX="37.0" layoutY="243.0" mnemonicParsing="false" onAction="#signInButtonOnAction" prefHeight="30.0" prefWidth="277.0" style="-fx-background-color: #4Eb09B;" text="Sign In" textFill="WHITE">
                <font>
@@ -83,7 +83,7 @@
                </font></Button>
             <PasswordField fx:id="passwordPasswordField" layoutX="165.0" layoutY="170.0" prefHeight="30.0" prefWidth="150.0" promptText="Password">
                <font>
-                  <Font size="15.0" />
+                  <Font size="14.0" />
                </font></PasswordField>
             <Label fx:id="signInMessageLabel" alignment="CENTER" layoutX="42.0" layoutY="83.0" prefHeight="18.0" prefWidth="274.0" textFill="#ff0808">
                <font>
