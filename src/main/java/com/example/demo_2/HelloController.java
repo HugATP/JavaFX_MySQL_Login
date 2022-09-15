@@ -24,7 +24,7 @@ public class HelloController {
     @FXML
     private PasswordField passwordPasswordField;
 
-    public void signInButtonOnAction(ActionEvent e) throws ClassNotFoundException {
+    public void signInButtonOnAction(ActionEvent e) throws ClassNotFoundException, SQLException {
         if(usernameTextField.getText().isBlank() == false && passwordPasswordField.getText().isBlank() == false) {
             validateSignIn();
 
@@ -46,20 +46,23 @@ public class HelloController {
         stage.close();
     }
 
-    public void validateSignIn() throws ClassNotFoundException {
+    public void validateSignIn() throws ClassNotFoundException, SQLException {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connection = connectNow.getConnection();
 
-        String verifySignIn = "SELECT count(1) FROM useraccounts " +
-                             "WHERE Username = '" + usernameTextField.getText() +
-                             "' AND Password = '" + passwordPasswordField.getText() + "'";
+        String verifySignIn = "SELECT count(*) FROM useraccounts WHERE Username = ? AND Password = ? ;";
+        PreparedStatement statement = connection.prepareStatement(verifySignIn);
+
+        statement.setString(1, usernameTextField.getText());
+        statement.setString(2, passwordPasswordField.getText());
+
         try {
-            Statement statement = connection.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifySignIn);
+            ResultSet queryResult = statement.executeQuery();
 
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
-                    signInMessageLabel.setText("Welcome!");
+                    String fullname = getNameFromDB(connection, usernameTextField.getText());
+                    signInMessageLabel.setText("Welcome " + fullname + " !");
                     // ? how to access data from sql database ?
                 } else {
                     signInMessageLabel.setText("Invalid login. Please try again");
@@ -94,5 +97,14 @@ public class HelloController {
             e.printStackTrace();
             signInMessageLabel.setText("Username has already existed. Please try again");
         }
+    }
+
+    public String getNameFromDB(Connection connection, String username) throws SQLException {
+        String getName = "SELECT concat(FirstName, ' ' ,LastName) FROM useraccounts WHERE Username = ? ;";
+        PreparedStatement statement = connection.prepareStatement(getName);
+        statement.setString(1, usernameTextField.getText());
+        ResultSet queryResult = statement.executeQuery();
+        queryResult.next();
+        return queryResult.getString(1);
     }
 }
