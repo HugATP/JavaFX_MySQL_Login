@@ -15,8 +15,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        FXMLLoader fxmlLoader_login = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+        FXMLLoader fxmlLoader_signup = new FXMLLoader(HelloApplication.class.getResource("signup.fxml"));
+        Scene scene = new Scene(fxmlLoader_login.load(), 600, 400);
         stage.setResizable(false);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Login");

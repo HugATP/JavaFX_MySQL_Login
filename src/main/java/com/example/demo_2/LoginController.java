@@ -2,15 +2,18 @@ package com.example.demo_2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 
-public class HelloController {
+public class LoginController {
     @FXML
     private Button quitButton;
     @FXML
@@ -24,7 +27,7 @@ public class HelloController {
     @FXML
     private PasswordField passwordPasswordField;
 
-    public void signInButtonOnAction(ActionEvent e) throws ClassNotFoundException, SQLException {
+    public void signInButtonOnAction(ActionEvent e) throws SQLException {
         if(usernameTextField.getText().isBlank() == false && passwordPasswordField.getText().isBlank() == false) {
             validateSignIn();
 
@@ -32,13 +35,12 @@ public class HelloController {
             signInMessageLabel.setText("Please enter username and password");
         }
     }
-
-    public void signUpButtonOnAction(ActionEvent e) throws ClassNotFoundException  {
-        if(usernameTextField.getText().isBlank() == false && passwordPasswordField.getText().isBlank() == false) {
-            validateSignUp();
-        } else {
-            signInMessageLabel.setText("Please enter username and password");
-        }
+    public void signUpButtonOnAction(ActionEvent e) throws IOException {
+        Stage stage = (Stage) signUpButton.getScene().getWindow();
+        FXMLLoader fxmlLoader_signup = new FXMLLoader(HelloApplication.class.getResource("signup.fxml"));
+        Scene scene = new Scene(fxmlLoader_signup.load(), 600, 400);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void quitButtonOnAction(ActionEvent e) {
@@ -46,7 +48,7 @@ public class HelloController {
         stage.close();
     }
 
-    public void validateSignIn() throws ClassNotFoundException, SQLException {
+    public void validateSignIn() throws SQLException {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connection = connectNow.getConnection();
 
@@ -75,29 +77,7 @@ public class HelloController {
         }
     }
 
-    public void validateSignUp() throws ClassNotFoundException {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connection = connectNow.getConnection();
 
-        String sqlDML = "INSERT INTO newuseracc VALUES (?, ?);";
-
-        try {
-            PreparedStatement statement = connection.prepareStatement(sqlDML);
-
-            statement.setString(1, usernameTextField.getText());
-            statement.setString(2, passwordPasswordField.getText());
-
-            int insertResult = statement.executeUpdate();
-            if (insertResult > 0) {
-                signInMessageLabel.setText("Hi, nice to meet you " + usernameTextField.getText());
-            }
-            statement.close();
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            signInMessageLabel.setText("Username has already existed. Please try again");
-        }
-    }
 
     public String getNameFromDB(Connection connection, String username) throws SQLException {
         String getName = "SELECT concat(FirstName, ' ' ,LastName) FROM useraccounts WHERE Username = ? ;";
