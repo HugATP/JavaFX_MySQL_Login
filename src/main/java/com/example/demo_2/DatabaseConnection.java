@@ -1,7 +1,6 @@
 package com.example.demo_2;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -11,7 +10,7 @@ public class DatabaseConnection {
     private String databaseName;
     private String databaseUser;
     private String databasePassword;
-    public Connection getConnection() throws ClassNotFoundException {
+    public Connection getConnection() {
         try {
             FileInputStream fis = new FileInputStream("src/main/resources/config.properties");
             Properties prop = new Properties();

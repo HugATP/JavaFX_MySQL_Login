@@ -15,48 +15,53 @@ import java.sql.Statement;
 
 public class HelloController {
     @FXML
-    private Button cancelButton;
+    private Button quitButton;
     @FXML
-    private Button loginButton;
+    private Button signInButton;
     @FXML
-    private Label loginMessageLabel;
+    private Button signUpButton;
+    @FXML
+    private Label signInMessageLabel;
     @FXML
     private TextField usernameTextField;
     @FXML
     private PasswordField passwordPasswordField;
 
-    public void loginButtonOnAction(ActionEvent e) throws ClassNotFoundException {
+    public void signInButtonOnAction(ActionEvent e) throws ClassNotFoundException {
         if(usernameTextField.getText().isBlank() == false && passwordPasswordField.getText().isBlank() == false) {
-            validateLogin();
+            validatesignIn();
 
         } else {
-            loginMessageLabel.setText("Please enter username and password");
+            signInMessageLabel.setText("Please enter username and password");
         }
+    }
+
+    public void signUpButtonOnAction(ActionEvent e) {
 
     }
 
-    public void cancelButtonOnAction(ActionEvent e) {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
+    public void quitButtonOnAction(ActionEvent e) {
+        Stage stage = (Stage) quitButton.getScene().getWindow();
         stage.close();
     }
 
-    public void validateLogin() throws ClassNotFoundException {
+    public void validatesignIn() throws ClassNotFoundException {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String verifyLogin = "SELECT count(1) FROM useraccounts " +
+        String verifysignIn = "SELECT count(1) FROM useraccounts " +
                              "WHERE Username = '" + usernameTextField.getText() +
                              "' AND Password = '" + passwordPasswordField.getText() + "'";
         try {
             Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
+            ResultSet queryResult = statement.executeQuery(verifysignIn);
 
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
-                    loginMessageLabel.setText("Welcome!");
+                    signInMessageLabel.setText("Welcome!");
                     // ? how to access data from sql database ?
                 } else {
-                    loginMessageLabel.setText("Invalid login. Please try again");
+                    signInMessageLabel.setText("Invalid login. Please try again");
                 }
             }
 
