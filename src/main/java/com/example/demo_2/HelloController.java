@@ -8,10 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class HelloController {
     @FXML
@@ -29,15 +26,19 @@ public class HelloController {
 
     public void signInButtonOnAction(ActionEvent e) throws ClassNotFoundException {
         if(usernameTextField.getText().isBlank() == false && passwordPasswordField.getText().isBlank() == false) {
-            validatesignIn();
+            validateSignIn();
 
         } else {
             signInMessageLabel.setText("Please enter username and password");
         }
     }
 
-    public void signUpButtonOnAction(ActionEvent e) {
-
+    public void signUpButtonOnAction(ActionEvent e) throws ClassNotFoundException  {
+        if(usernameTextField.getText().isBlank() == false && passwordPasswordField.getText().isBlank() == false) {
+            validateSignUp();
+        } else {
+            signInMessageLabel.setText("Please enter username and password");
+        }
     }
 
     public void quitButtonOnAction(ActionEvent e) {
@@ -45,16 +46,16 @@ public class HelloController {
         stage.close();
     }
 
-    public void validatesignIn() throws ClassNotFoundException {
+    public void validateSignIn() throws ClassNotFoundException {
         DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
+        Connection connection = connectNow.getConnection();
 
-        String verifysignIn = "SELECT count(1) FROM useraccounts " +
+        String verifySignIn = "SELECT count(1) FROM useraccounts " +
                              "WHERE Username = '" + usernameTextField.getText() +
                              "' AND Password = '" + passwordPasswordField.getText() + "'";
         try {
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifysignIn);
+            Statement statement = connection.createStatement();
+            ResultSet queryResult = statement.executeQuery(verifySignIn);
 
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
@@ -64,10 +65,34 @@ public class HelloController {
                     signInMessageLabel.setText("Invalid login. Please try again");
                 }
             }
-
+//            statement.close();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    public void validateSignUp() throws ClassNotFoundException {
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connection = connectNow.getConnection();
+
+        String sqlDML = "INSERT INTO newuseracc VALUES (?, ?);";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sqlDML);
+
+            statement.setString(1, usernameTextField.getText());
+            statement.setString(2, passwordPasswordField.getText());
+
+            int insertResult = statement.executeUpdate();
+            if (insertResult > 0) {
+                signInMessageLabel.setText("Hi, nice to meet you " + usernameTextField.getText());
+            }
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            signInMessageLabel.setText("Username has already existed. Please try again");
+        }
+    }
 }
