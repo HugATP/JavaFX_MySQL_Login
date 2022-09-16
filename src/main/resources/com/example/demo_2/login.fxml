@@ -85,7 +85,7 @@
                <font>
                   <Font size="14.0" />
                </font></PasswordField>
-            <Label fx:id="signInMessageLabel" alignment="CENTER" layoutX="42.0" layoutY="83.0" prefHeight="18.0" prefWidth="274.0" textFill="#ff0808">
+            <Label fx:id="signInMessageLabel" alignment="CENTER" layoutX="42.0" layoutY="83.0" prefHeight="18.0" prefWidth="274.0" textFill="#56b7a2">
                <font>
                   <Font name="Verdana Italic" size="11.0" />
                </font>

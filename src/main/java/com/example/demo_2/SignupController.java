@@ -16,6 +16,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class SignupController {
+
+    DatabaseConnection connectNow = new DatabaseConnection();
+    Connection connection = connectNow.getConnection();
     @FXML
     private Button backButton;
     @FXML
@@ -36,6 +39,7 @@ public class SignupController {
     private TextField lastNameTextField;
 
 
+
     public void quitButtonOnAction(ActionEvent e) {
         Stage stage = (Stage) quitButton.getScene().getWindow();
         stage.close();
@@ -44,10 +48,7 @@ public class SignupController {
 
     public void backButtonOnAction(ActionEvent e) throws IOException {
         Stage stage = (Stage) backButton.getScene().getWindow();
-        FXMLLoader fxmlLoader_login = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader_login.load(), 600, 400);
-        stage.setScene(scene);
-        stage.show();
+        CommonFunction.changeScene(stage,"login.fxml");
     }
 
 
@@ -60,8 +61,6 @@ public class SignupController {
     }
 
     public void validateRegister() {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connection = connectNow.getConnection();
 
         String sqlDML = "INSERT INTO useraccounts(FirstName, LastName, Username, Password) VALUES (?, ?, ?, ?);";
 
@@ -83,7 +82,6 @@ public class SignupController {
             signUpMessageLabel.setText("Username has already existed");
         }
     }
-
 
 
 }

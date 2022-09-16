@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.sql.*;
 
 public class LoginController {
+    DatabaseConnection connectNow = new DatabaseConnection();
+    Connection connection = connectNow.getConnection();
     @FXML
     private Button quitButton;
     @FXML
@@ -27,6 +29,7 @@ public class LoginController {
     @FXML
     private PasswordField passwordPasswordField;
 
+
     public void signInButtonOnAction(ActionEvent e) throws SQLException {
         if(usernameTextField.getText().isBlank() == false && passwordPasswordField.getText().isBlank() == false) {
             validateSignIn();
@@ -37,10 +40,7 @@ public class LoginController {
     }
     public void signUpButtonOnAction(ActionEvent e) throws IOException {
         Stage stage = (Stage) signUpButton.getScene().getWindow();
-        FXMLLoader fxmlLoader_signup = new FXMLLoader(HelloApplication.class.getResource("signup.fxml"));
-        Scene scene = new Scene(fxmlLoader_signup.load(), 600, 400);
-        stage.setScene(scene);
-        stage.show();
+        CommonFunction.changeScene(stage, "signup.fxml");
     }
 
     public void quitButtonOnAction(ActionEvent e) {
@@ -49,8 +49,7 @@ public class LoginController {
     }
 
     public void validateSignIn() throws SQLException {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connection = connectNow.getConnection();
+
 
         String verifySignIn = "SELECT count(*) FROM useraccounts WHERE Username = ? AND Password = ? ;";
         PreparedStatement statement = connection.prepareStatement(verifySignIn);
@@ -63,23 +62,28 @@ public class LoginController {
 
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
-                    String fullname = getNameFromDB(connection, usernameTextField.getText());
+                    String fullname = getNameFromDB(usernameTextField.getText());
                     signInMessageLabel.setText("Welcome " + fullname + " !");
-                    // ? how to access data from sql database ?
+                    if(usernameTextField.getText().equals("admin")){
+                        Stage stage = (Stage) signInButton.getScene().getWindow();
+                        CommonFunction.changeScene(stage,"admin.fxml");
+                    }
                 } else {
                     signInMessageLabel.setText("Invalid login. Please try again");
                 }
             }
-//            statement.close();
-            connection.close();
+            statement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
 
 
-    public String getNameFromDB(Connection connection, String username) throws SQLException {
+    public String getNameFromDB(String username) throws SQLException {
         String getName = "SELECT concat(FirstName, ' ' ,LastName) FROM useraccounts WHERE Username = ? ;";
         PreparedStatement statement = connection.prepareStatement(getName);
         statement.setString(1, usernameTextField.getText());

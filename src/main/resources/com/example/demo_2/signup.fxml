@@ -76,7 +76,7 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Button>
-                <Label fx:id="signUpMessageLabel" alignment="CENTER" layoutX="50.0" layoutY="75.0" prefHeight="18.0" prefWidth="255.0" textFill="#ff0808">
+                <Label fx:id="signUpMessageLabel" alignment="CENTER" layoutX="50.0" layoutY="75.0" prefHeight="18.0" prefWidth="255.0" textFill="#4eb09b">
                     <font>
                         <Font name="Verdana Italic" size="13.0" />
                     </font>
