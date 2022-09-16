@@ -1,4 +1,4 @@
-package com.example.demo_2;
+package com.example.demo_2.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,8 +40,6 @@ public class SignupController extends CommonController {
             signUpMessageLabel.setText("Please enter all the fields!");
         } else {
             validateRegister();
-            // wait functon is not running truely;
-            // wait(1000, 0);
             Stage stage = (Stage) registerButton.getScene().getWindow();
             setUsername(usernameTextField.getText());
             changeScene(stage, "userHome.fxml");

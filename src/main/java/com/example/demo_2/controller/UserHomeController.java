@@ -1,15 +1,21 @@
-package com.example.demo_2;
+package com.example.demo_2.controller;
 
+import com.example.demo_2.UserAccount;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class UserHomeController extends CommonController {
+public class UserHomeController extends CommonController implements Initializable {
     @FXML
     private Label usernameLabel;
     @FXML
@@ -25,10 +31,14 @@ public class UserHomeController extends CommonController {
     public void backButtonOnAction(ActionEvent e) throws IOException {
         super.backButtonOnAction(e, "login.fxml");
     }
-    public void loadButtonOnAction() throws SQLException {
-        loadUserInfo();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            loadUserInfo();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-
     public void loadUserInfo() throws SQLException {
         String loadUserData = "SELECT * FROM useraccounts WHERE Username = ?;";
         PreparedStatement statement = connection.prepareStatement(loadUserData);

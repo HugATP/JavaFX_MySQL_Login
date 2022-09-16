@@ -1,5 +1,7 @@
-package com.example.demo_2;
+package com.example.demo_2.controller;
 
+import com.example.demo_2.DatabaseConnection;
+import com.example.demo_2.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

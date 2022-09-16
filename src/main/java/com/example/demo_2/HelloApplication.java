@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -22,6 +23,8 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader_userhome.load(), 600, 400);
         stage.setResizable(false);
         stage.initStyle(StageStyle.UNDECORATED);
+//        Image icon_ = new Image("java/img/icons8-login-64.png");
+//        stage.getIcons().add(icon_);
         stage.setTitle("Login app");
         stage.setScene(scene);
         stage.show();

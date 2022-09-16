@@ -1,5 +1,6 @@
-package com.example.demo_2;
+package com.example.demo_2.controller;
 
+import com.example.demo_2.UserAccount;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -65,14 +66,20 @@ public class AdminController extends CommonController implements Initializable {
     }
     public void search() throws SQLException {
         reset();
+
         String queryUser = "SELECT * FROM useraccounts WHERE Username LIKE '%"
                         + usernameSearchTextField.getText()
                         + "%' AND (LastName LIKE '%"
                         + nameSearchTextField.getText() + "%' OR FirstName LIKE '%"
                         + nameSearchTextField.getText() + "%') LIMIT 15;";
+
         PreparedStatement statement = connection.prepareStatement(queryUser);
         ResultSet resultSet = statement.executeQuery();
+
         while (resultSet.next()){
+            /**
+             * get value from column in Database.
+             */
             UserAccount userAccount = new UserAccount(
                     Integer.valueOf(resultSet.getInt("UserID")),
                     resultSet.getString("Username"),
@@ -88,6 +95,9 @@ public class AdminController extends CommonController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userAccountList = FXCollections.observableArrayList();
 
+        /**
+         * get value from column in userAccountList, from each UserAccount.
+         */
         userIDColumn.setCellValueFactory(new PropertyValueFactory<UserAccount,Integer>("userID"));
         usernameColumn.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("username"));
         passwordColumn.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("password"));
