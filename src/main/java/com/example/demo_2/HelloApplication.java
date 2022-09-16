@@ -13,18 +13,16 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
-    public static FXMLLoader fxmlLoader_login = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-    public static FXMLLoader fxmlLoader_signup = new FXMLLoader(HelloApplication.class.getResource("signup.fxml"));
-    public static FXMLLoader fxmlLoader_admin = new FXMLLoader(HelloApplication.class.getResource("admin.fxml"));
+    public static FXMLLoader fxmlLoader_userhome = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
 
     //    public static Stage stage = new Stage();
     @Override
     public void start(Stage stage) throws IOException {
 
-        Scene scene = new Scene(fxmlLoader_admin.load(), 600, 400);
+        Scene scene = new Scene(fxmlLoader_userhome.load(), 600, 400);
         stage.setResizable(false);
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.setTitle("Login");
+        stage.setTitle("Login app");
         stage.setScene(scene);
         stage.show();
     }

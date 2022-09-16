@@ -2,8 +2,6 @@ package com.example.demo_2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -11,20 +9,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class SignupController {
-
-    DatabaseConnection connectNow = new DatabaseConnection();
-    Connection connection = connectNow.getConnection();
+public class SignupController extends CommonController {
     @FXML
-    private Button backButton;
-    @FXML
-    private Button quitButton;
-    @FXML
-
     private Button registerButton;
     @FXML
     private Label signUpMessageLabel;
@@ -32,31 +21,30 @@ public class SignupController {
     private TextField usernameTextField;
     @FXML
     private PasswordField passwordPasswordField;
-
     @FXML
     private TextField firstNameTextField;
     @FXML
     private TextField lastNameTextField;
 
 
-
-    public void quitButtonOnAction(ActionEvent e) {
-        Stage stage = (Stage) quitButton.getScene().getWindow();
-        stage.close();
-    }
-
-
     public void backButtonOnAction(ActionEvent e) throws IOException {
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        CommonFunction.changeScene(stage,"login.fxml");
+        super.backButtonOnAction(e, "login.fxml");
     }
 
 
-    public void registerButtonOnAction(ActionEvent e) throws ClassNotFoundException  {
-        if(usernameTextField.getText().isBlank() == false && passwordPasswordField.getText().isBlank() == false) {
-            validateRegister();
-        } else {
+    public void registerButtonOnAction(ActionEvent e) throws IOException, InterruptedException {
+        if(usernameTextField.getText().isBlank()
+            || passwordPasswordField.getText().isBlank()
+            || lastNameTextField.getText().isBlank()
+            || firstNameTextField.getText().isBlank()) {
             signUpMessageLabel.setText("Please enter all the fields!");
+        } else {
+            validateRegister();
+            // wait functon is not running truely;
+            wait(1000, 0);
+            Stage stage = (Stage) registerButton.getScene().getWindow();
+            changeScene(stage, "userHome.fxml");
+
         }
     }
 
@@ -73,13 +61,15 @@ public class SignupController {
 
             int insertResult = statement.executeUpdate();
             if (insertResult > 0) {
-                signUpMessageLabel.setText("Hi, nice to meet you " + firstNameTextField.getText() + ' ' + lastNameTextField.getText());
+                signUpMessageLabel.setText("Hi, nice to meet you " +
+                        firstNameTextField.getText() + ' ' +
+                        lastNameTextField.getText() + " <3");
             }
             statement.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            signUpMessageLabel.setText("Username has already existed");
+            signUpMessageLabel.setText("Username has already existed!");
         }
     }
 

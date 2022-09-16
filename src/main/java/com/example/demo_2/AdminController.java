@@ -2,26 +2,15 @@ package com.example.demo_2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AdminController {
-    DatabaseConnection connectNow = new DatabaseConnection();
-    Connection connection = connectNow.getConnection();
-
-    @FXML
-    private Button backButton;
-    @FXML
-    private Button quitButton;
+public class AdminController extends CommonController {
     @FXML
     private Button searchButton;
     @FXML
@@ -29,20 +18,8 @@ public class AdminController {
     @FXML
     private TextField fullnameSearchTextField;
 
-
-
-    public void quitButtonOnAction(ActionEvent e) {
-        Stage stage = (Stage) quitButton.getScene().getWindow();
-        stage.close();
-    }
-
-
     public void backButtonOnAction(ActionEvent e) throws IOException {
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        FXMLLoader fxmlLoader_login = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader_login.load(), 600, 400);
-        stage.setScene(scene);
-        stage.show();
+        super.backButtonOnAction(e, "login.fxml");
     }
 
     public void searchButtonOnAction(ActionEvent e) throws SQLException {
