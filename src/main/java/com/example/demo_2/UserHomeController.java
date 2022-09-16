@@ -36,13 +36,14 @@ public class UserHomeController extends CommonController {
         try {
             ResultSet queryResult = statement.executeQuery();
             queryResult.next();
+            // get String from column in Database
             usernameLabel.setText(queryResult.getString("Username"));
             firstnameLabel.setText(queryResult.getString("Firstname"));
             lastnameLabel.setText(queryResult.getString("Lastname"));
             fullnameTextField.setText(firstnameLabel.getText() + ' ' + lastnameLabel.getText());
             // chưa có data về cái này
-            genderLabel.setText(queryResult.getString("Username"));
-            dobLabel.setText(queryResult.getString("Username"));
+            genderLabel.setText(queryResult.getString("Gender"));
+            dobLabel.setText(queryResult.getString("DateOfBirth"));
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -41,8 +41,9 @@ public class SignupController extends CommonController {
         } else {
             validateRegister();
             // wait functon is not running truely;
-            wait(1000, 0);
+            // wait(1000, 0);
             Stage stage = (Stage) registerButton.getScene().getWindow();
+            setUsername(usernameTextField.getText());
             changeScene(stage, "userHome.fxml");
 
         }

@@ -52,6 +52,7 @@ public class LoginController extends CommonController {
                         Stage stage = (Stage) signInButton.getScene().getWindow();
                         changeScene(stage,"admin.fxml");
                     } else {
+                        setUsername(usernameTextField.getText());
                         Stage stage = (Stage) signInButton.getScene().getWindow();
                         changeScene(stage,"userHome.fxml");
                     }

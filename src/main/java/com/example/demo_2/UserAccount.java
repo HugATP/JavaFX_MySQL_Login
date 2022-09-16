@@ -1,27 +1,38 @@
 package com.example.demo_2;
 
 public class UserAccount {
-    private int userID;
+    private Integer userID;
+
+    private String username;
+    private String password;
     private String firstName;
     private String lastName;
-    private String userName;
-    private String password;
+
 
     public UserAccount() {}
 
-    public UserAccount(int userID, String firstName, String lastName, String userName, String password) {
+    public UserAccount(Integer userID, String username, String password, String firstName, String lastName) {
         this.userID = userID;
+        this.username = username;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
-        this.password = password;
     }
 
-    public UserAccount(String firstName, String lastName, String userName, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userName = userName;
-        this.password = password;
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstName() {
@@ -39,15 +50,6 @@ public class UserAccount {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getPassword() {
         return password;
     }
