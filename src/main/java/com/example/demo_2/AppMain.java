@@ -2,19 +2,14 @@ package com.example.demo_2;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
-    public static FXMLLoader fxmlLoader_userhome = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+public class AppMain extends Application {
+    public static FXMLLoader fxmlLoader_userhome = new FXMLLoader(AppMain.class.getResource("login.fxml"));
 
     //    public static Stage stage = new Stage();
     @Override
