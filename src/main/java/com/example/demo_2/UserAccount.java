@@ -8,9 +8,10 @@ import lombok.*;
 @NoArgsConstructor
 public class UserAccount {
     private Integer userID;
-
     private String username;
     private String password;
+    private String createdDate;
     private String firstName;
     private String lastName;
+    private String dob;
 }

@@ -1,16 +1,18 @@
 package com.example.demo_2.controller;
 
+import javafx.beans.value.ObservableListValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class SignupController extends CommonController {
     @FXML
@@ -25,10 +27,21 @@ public class SignupController extends CommonController {
     private TextField firstNameTextField;
     @FXML
     private TextField lastNameTextField;
+    @FXML
+    private ComboBox<String> genderComboBox;
+
+    ObservableList<String> genderList = FXCollections.observableArrayList("Male", "Female" , "Bê đê");
+    @FXML
+    private DatePicker dobDatePicker;
 
 
     public void backButtonOnAction(ActionEvent e) throws IOException {
         super.backButtonOnAction(e, "login.fxml");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        genderComboBox.setItems(genderList);
     }
 
 
@@ -49,14 +62,17 @@ public class SignupController extends CommonController {
 
     public void validateRegister() {
 
-        String sqlDML = "INSERT INTO useraccounts(FirstName, LastName, Username, Password) VALUES (?, ?, ?, ?);";
+        String sqlDML = "INSERT INTO useraccount (Username, Password, FirstName, LastName, Gender, DOB) " +
+                        "VALUE (?,?,?,?,?,?)";
 
         try {
             PreparedStatement statement = connection.prepareStatement(sqlDML);
-            statement.setString(1, firstNameTextField.getText());
-            statement.setString(2, lastNameTextField.getText());
-            statement.setString(3, usernameTextField.getText());
-            statement.setString(4, passwordPasswordField.getText());
+            statement.setString(3, firstNameTextField.getText());
+            statement.setString(4, lastNameTextField.getText());
+            statement.setString(1, usernameTextField.getText());
+            statement.setString(2, passwordPasswordField.getText());
+            statement.setString(5, genderComboBox.getValue());
+            statement.setString(6, String.valueOf(dobDatePicker.getValue()));
 
             int insertResult = statement.executeUpdate();
             if (insertResult > 0) {

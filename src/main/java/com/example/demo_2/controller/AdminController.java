@@ -40,9 +40,13 @@ public class AdminController extends CommonController implements Initializable {
     @FXML
     private TableColumn<UserAccount, String> passwordColumn;
     @FXML
+    private TableColumn<UserAccount, String> createdDateColumn;
+    @FXML
     private TableColumn<UserAccount, String> firstNameColumn;
     @FXML
     private TableColumn<UserAccount, String> lastNameColumn;
+    @FXML
+    private TableColumn<UserAccount, String> DOBColumn;
     private ObservableList<UserAccount> userAccountList;
 
 
@@ -67,25 +71,28 @@ public class AdminController extends CommonController implements Initializable {
     public void search() throws SQLException {
         reset();
 
-        String queryUser = "SELECT * FROM useraccounts WHERE Username LIKE '%"
+        String queryUser = "SELECT * FROM useraccount WHERE Username LIKE '%"
                         + usernameSearchTextField.getText()
                         + "%' AND (LastName LIKE '%"
                         + nameSearchTextField.getText() + "%' OR FirstName LIKE '%"
-                        + nameSearchTextField.getText() + "%') LIMIT 15;";
+                        + nameSearchTextField.getText() + "%') LIMIT 20;";
 
         PreparedStatement statement = connection.prepareStatement(queryUser);
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()){
             /**
+             * constructor userAccount
              * get value from column in Database.
              */
             UserAccount userAccount = new UserAccount(
                     Integer.valueOf(resultSet.getInt("UserID")),
                     resultSet.getString("Username"),
                     resultSet.getString("Password"),
+                    resultSet.getString("CreatedDate"),
                     resultSet.getString("Firstname"),
-                    resultSet.getString("Lastname")
+                    resultSet.getString("Lastname"),
+                    resultSet.getString("DOB")
             );
             userAccountList.add(userAccount);
         }
@@ -96,6 +103,7 @@ public class AdminController extends CommonController implements Initializable {
         userAccountList = FXCollections.observableArrayList();
 
         /**
+         * column in Table
          * get value from column in userAccountList, from each UserAccount.
          */
         userIDColumn.setCellValueFactory(new PropertyValueFactory<UserAccount,Integer>("userID"));
@@ -103,6 +111,8 @@ public class AdminController extends CommonController implements Initializable {
         passwordColumn.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("password"));
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("lastName"));
+        createdDateColumn.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("createdDate"));
+        DOBColumn.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("dob"));
 
         userAccountTableView.setItems(userAccountList);
     }

@@ -40,7 +40,7 @@ public class UserHomeController extends CommonController implements Initializabl
         }
     }
     public void loadUserInfo() throws SQLException {
-        String loadUserData = "SELECT * FROM useraccounts WHERE Username = ?;";
+        String loadUserData = "SELECT * FROM useraccount WHERE Username = ?;";
         PreparedStatement statement = connection.prepareStatement(loadUserData);
         statement.setString(1, username);
         try {
@@ -51,9 +51,9 @@ public class UserHomeController extends CommonController implements Initializabl
             firstnameLabel.setText(queryResult.getString("Firstname"));
             lastnameLabel.setText(queryResult.getString("Lastname"));
             fullnameTextField.setText(firstnameLabel.getText() + ' ' + lastnameLabel.getText());
-            // chưa có data về cái này
             genderLabel.setText(queryResult.getString("Gender"));
-            dobLabel.setText(queryResult.getString("DateOfBirth"));
+            dobLabel.setText(queryResult.getString("DOB"));
+
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();

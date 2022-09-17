@@ -73,7 +73,7 @@
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <Button fx:id="signInButton" layoutX="37.0" layoutY="243.0" mnemonicParsing="false" onAction="#signInButtonOnAction" prefHeight="30.0" prefWidth="277.0" style="-fx-background-color: #4Eb09B;" text="Sign In" textFill="WHITE">
+            <Button fx:id="logInButton" layoutX="37.0" layoutY="243.0" mnemonicParsing="false" onAction="#logInButtonOnAction" prefHeight="30.0" prefWidth="277.0" style="-fx-background-color: #4Eb09B;" text="Sign In" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
@@ -85,7 +85,7 @@
                <font>
                   <Font size="14.0" />
                </font></PasswordField>
-            <Label fx:id="signInMessageLabel" alignment="CENTER" layoutX="42.0" layoutY="83.0" prefHeight="18.0" prefWidth="274.0" textFill="#077158">
+            <Label fx:id="logInMessageLabel" alignment="CENTER" layoutX="42.0" layoutY="83.0" prefHeight="18.0" prefWidth="274.0" textFill="#077158">
                <font>
                   <Font name="Verdana Italic" size="12.0" />
                </font>

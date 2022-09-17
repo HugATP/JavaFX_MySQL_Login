@@ -13,11 +13,11 @@ import java.sql.*;
 
 public class LoginController extends CommonController {
     @FXML
-    private Button signInButton;
+    private Button logInButton;
     @FXML
     private Button signUpButton;
     @FXML
-    private Label signInMessageLabel;
+    private Label logInMessageLabel;
     @FXML
     private TextField usernameTextField;
     @FXML
@@ -28,17 +28,17 @@ public class LoginController extends CommonController {
         changeScene(stage, "signup.fxml");
     }
 
-    public void signInButtonOnAction(ActionEvent e) throws SQLException {
+    public void logInButtonOnAction(ActionEvent e) throws SQLException {
         if(usernameTextField.getText().isBlank() == false && passwordPasswordField.getText().isBlank() == false) {
-            validateSignIn();
+            validatelogIn();
         } else {
-            signInMessageLabel.setText("Please enter username and password");
+            logInMessageLabel.setText("Please enter username and password");
         }
     }
 
-    public void validateSignIn() throws SQLException {
-        String verifySignIn = "SELECT count(*) FROM useraccounts WHERE Username = ? AND Password = ? ;";
-        PreparedStatement statement = connection.prepareStatement(verifySignIn);
+    public void validatelogIn() throws SQLException {
+        String verifylogIn = "SELECT count(*) FROM useraccount WHERE Username = ? AND Password = ? ;";
+        PreparedStatement statement = connection.prepareStatement(verifylogIn);
 
         statement.setString(1, usernameTextField.getText());
         statement.setString(2, passwordPasswordField.getText());
@@ -49,15 +49,15 @@ public class LoginController extends CommonController {
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
                     if(usernameTextField.getText().equals("admin")){
-                        Stage stage = (Stage) signInButton.getScene().getWindow();
+                        Stage stage = (Stage) logInButton.getScene().getWindow();
                         changeScene(stage,"admin.fxml");
                     } else {
                         setUsername(usernameTextField.getText());
-                        Stage stage = (Stage) signInButton.getScene().getWindow();
+                        Stage stage = (Stage) logInButton.getScene().getWindow();
                         changeScene(stage,"userHome.fxml");
                     }
                 } else {
-                    signInMessageLabel.setText("Invalid login. Please try again");
+                    logInMessageLabel.setText("Invalid login. Please try again");
                 }
             }
             statement.close();
