@@ -25,12 +25,12 @@
                         <Font name="Verdana" size="16.0" />
                     </font>
                 </Label>
-                <Button fx:id="backButton" layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="&lt;" textFill="WHITE">
+                <Button fx:id="backButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="&lt;" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="quitButton" layoutX="566.0" layoutY="3.0" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="x" textFill="WHITE">
+                <Button fx:id="quitButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="566.0" layoutY="3.0" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="x" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Button>
@@ -44,7 +44,7 @@
                   <Font name="Verdana" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="searchButton" layoutX="505.0" layoutY="83.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" text="Search" textFill="WHITE">
+            <Button fx:id="searchButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="505.0" layoutY="83.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" text="Search" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -80,7 +80,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="resetButton" layoutX="505.0" layoutY="46.0" mnemonicParsing="false" onAction="#resetButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" text="Reset" textFill="WHITE">
+            <Button fx:id="resetButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="505.0" layoutY="46.0" mnemonicParsing="false" onAction="#resetButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" text="Reset" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

@@ -62,7 +62,7 @@
                   <Font name="Verdana Bold" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="quitButton" layoutX="313.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="30.0" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="x" textFill="WHITE">
+            <Button fx:id="quitButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="313.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="30.0" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="x" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
@@ -115,7 +115,7 @@
                         <Font size="14.0" />
                      </font>
                   </PasswordField>
-                  <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#signUpButtonOnAction" prefHeight="30.0" prefWidth="147.0" style="-fx-background-color: #4Eb09B;" text="Sign Up" textFill="WHITE" underline="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Button fx:id="signUpButton" styleClass="btn" stylesheets="@../css/Button.css" mnemonicParsing="false" onAction="#signUpButtonOnAction" prefHeight="30.0" prefWidth="147.0" style="-fx-background-color: #4Eb09B;" text="Sign Up" textFill="WHITE" underline="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -127,7 +127,7 @@
                   </Label>
                </children>
             </GridPane>
-            <Button fx:id="logInButton" layoutX="35.0" layoutY="203.0" mnemonicParsing="false" onAction="#logInButtonOnAction" prefHeight="30.0" prefWidth="292.0" style="-fx-background-color: #4Eb09B;" text="Log In" textFill="WHITE">
+            <Button fx:id="logInButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="35.0" layoutY="203.0" mnemonicParsing="false" onAction="#logInButtonOnAction" prefHeight="30.0" prefWidth="292.0" style="-fx-background-color: #4Eb09B;" text="Log In" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

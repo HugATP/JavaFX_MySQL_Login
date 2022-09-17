@@ -124,7 +124,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="registerButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="30.0" prefWidth="87.0" style="-fx-background-color: #4Eb09B;" text="Register" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Button fx:id="registerButton" styleClass="btn" stylesheets="@../css/Button.css" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="30.0" prefWidth="87.0" style="-fx-background-color: #4Eb09B;" text="Register" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -141,12 +141,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                      <Button fx:id="quitButton" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="x" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                      <Button fx:id="quitButton" styleClass="btn" stylesheets="@../css/Button.css" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="x" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                           <font>
                               <Font name="System Bold" size="12.0" />
                           </font>
                   </Button>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="&lt;" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button fx:id="backButton" styleClass="btn" stylesheets="@../css/Button.css" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="&lt;" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
