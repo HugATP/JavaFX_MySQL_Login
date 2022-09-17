@@ -55,8 +55,7 @@ public class SignupController extends CommonController {
         } else {
             validateRegister();
             Stage stage = (Stage) registerButton.getScene().getWindow();
-            setUsername(usernameTextField.getText());
-            changeScene(stage, "userHome.fxml");
+            changeScene(stage, "login.fxml");
 
         }
     }
@@ -65,7 +64,6 @@ public class SignupController extends CommonController {
 
         String sqlDML = "INSERT INTO useraccount (username, password, firstName, lastName, gender, dob) " +
                         "VALUE (?,?,?,?,?,?)";
-
         try {
             PreparedStatement statement = connection.prepareStatement(sqlDML);
             statement.setString(3, firstNameTextField.getText());
@@ -76,11 +74,7 @@ public class SignupController extends CommonController {
             statement.setString(6, String.valueOf(dobDatePicker.getValue()));
 
             int insertResult = statement.executeUpdate();
-            if (insertResult > 0) {
-                signUpMessageLabel.setText("Hi, nice to meet you " +
-                        firstNameTextField.getText() + ' ' +
-                        lastNameTextField.getText() + " <3");
-            }
+
             statement.close();
             connection.close();
         } catch (SQLException e) {

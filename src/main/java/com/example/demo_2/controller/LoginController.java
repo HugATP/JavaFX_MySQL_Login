@@ -37,7 +37,7 @@ public class LoginController extends CommonController {
     }
 
     public void validatelogIn() throws SQLException {
-        String verifylogIn = "SELECT count(*) FROM useraccount WHERE username = ? AND password = ? ;";
+        String verifylogIn = "SELECT * FROM useraccount WHERE username = ? AND password = ? ;";
         PreparedStatement statement = connection.prepareStatement(verifylogIn);
 
         statement.setString(1, usernameTextField.getText());
@@ -47,12 +47,14 @@ public class LoginController extends CommonController {
             ResultSet queryResult = statement.executeQuery();
 
             while (queryResult.next()) {
-                if (queryResult.getInt(1) == 1) {
+                if (queryResult.getInt("userID") > 0) {
+
+                    setUserID(queryResult.getInt("userID"));
+
                     if(usernameTextField.getText().equals("admin")){
                         Stage stage = (Stage) logInButton.getScene().getWindow();
                         changeScene(stage,"admin.fxml");
                     } else {
-                        setUsername(usernameTextField.getText());
                         Stage stage = (Stage) logInButton.getScene().getWindow();
                         changeScene(stage,"userHome.fxml");
                     }

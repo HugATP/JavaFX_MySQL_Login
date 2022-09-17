@@ -1,12 +1,16 @@
 package com.example.demo_2.controller;
 
+import com.example.demo_2.AppMain;
 import com.example.demo_2.UserAccount;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,9 +32,16 @@ public class UserHomeController extends CommonController implements Initializabl
     private Label dobLabel;
     @FXML
     private Label fullnameTextField;
+
+
+
+    @FXML
+    private TextField scoreTextField;
+
     public void backButtonOnAction(ActionEvent e) throws IOException {
         super.backButtonOnAction(e, "login.fxml");
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -39,10 +50,11 @@ public class UserHomeController extends CommonController implements Initializabl
             throw new RuntimeException(e);
         }
     }
+
     public void loadUserInfo() throws SQLException {
-        String loadUserDataQuery = "SELECT * FROM useraccount WHERE username = ?;";
+        String loadUserDataQuery = "SELECT * FROM useraccount WHERE userID = ?;";
         PreparedStatement statement = connection.prepareStatement(loadUserDataQuery);
-        statement.setString(1, username);
+        statement.setString(1, String.valueOf(userID));
         try {
             ResultSet queryResult = statement.executeQuery();
             queryResult.next();
@@ -60,4 +72,13 @@ public class UserHomeController extends CommonController implements Initializabl
         }
     }
 
+    private void scoreTextFieldOnAction(ActionEvent e) {
+
+
+        /*scene.setOnKeyPressed((KeyEvent event) -> {
+            String type = event.getEventType().getName();
+            KeyCode keyCode = event.getCode();
+            System.out.println("Type: " + type + " Code: " + keyCode);
+        });*/
+    }
 }
