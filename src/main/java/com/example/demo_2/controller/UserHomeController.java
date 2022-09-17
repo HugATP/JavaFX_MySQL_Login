@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -33,11 +34,10 @@ public class UserHomeController extends CommonController implements Initializabl
     @FXML
     private Label fullnameTextField;
 
-
-
     @FXML
     private TextField scoreTextField;
-
+    @FXML
+    private Button pushButton;
     public void backButtonOnAction(ActionEvent e) throws IOException {
         super.backButtonOnAction(e, "login.fxml");
     }
@@ -72,13 +72,27 @@ public class UserHomeController extends CommonController implements Initializabl
         }
     }
 
-    private void scoreTextFieldOnAction(ActionEvent e) {
+    public void scoreTextFieldOnAction(ActionEvent e) {
 
-
-        /*scene.setOnKeyPressed((KeyEvent event) -> {
-            String type = event.getEventType().getName();
-            KeyCode keyCode = event.getCode();
-            System.out.println("Type: " + type + " Code: " + keyCode);
-        });*/
     }
+
+    public void pushButtonOnAction(ActionEvent e) {
+        pushData();
+        scoreTextField.setText("");
+    }
+    public void pushData(){
+        String sqlDML = "INSERT INTO gamescore (userID, score) VALUE (?,?)";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sqlDML);
+            statement.setString(1, String.valueOf(userID));
+            statement.setString(2, scoreTextField.getText());
+            int insertResult = statement.executeUpdate();
+            if(insertResult > 0) System.out.println( "oke roi ban oi");
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println( "khong on ròi");
+        }
+    }
+
 }
