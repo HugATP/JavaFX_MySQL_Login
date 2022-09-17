@@ -29,15 +29,15 @@ public class LoginController extends CommonController {
     }
 
     public void logInButtonOnAction(ActionEvent e) throws SQLException {
-        if(usernameTextField.getText().isBlank() == false && passwordPasswordField.getText().isBlank() == false) {
-            validatelogIn();
-        } else {
+        if(usernameTextField.getText().isBlank() || passwordPasswordField.getText().isBlank()) {
             logInMessageLabel.setText("Please enter username and password");
+        } else {
+            validatelogIn();
         }
     }
 
     public void validatelogIn() throws SQLException {
-        String verifylogIn = "SELECT count(*) FROM useraccount WHERE Username = ? AND Password = ? ;";
+        String verifylogIn = "SELECT count(*) FROM useraccount WHERE username = ? AND password = ? ;";
         PreparedStatement statement = connection.prepareStatement(verifylogIn);
 
         statement.setString(1, usernameTextField.getText());

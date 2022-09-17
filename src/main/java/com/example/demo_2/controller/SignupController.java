@@ -49,7 +49,8 @@ public class SignupController extends CommonController {
         if(usernameTextField.getText().isBlank()
             || passwordPasswordField.getText().isBlank()
             || lastNameTextField.getText().isBlank()
-            || firstNameTextField.getText().isBlank()) {
+            || firstNameTextField.getText().isBlank()
+            || genderComboBox.getValue().isBlank() ) {
             signUpMessageLabel.setText("Please enter all the fields!");
         } else {
             validateRegister();
@@ -62,7 +63,7 @@ public class SignupController extends CommonController {
 
     public void validateRegister() {
 
-        String sqlDML = "INSERT INTO useraccount (Username, Password, FirstName, LastName, Gender, DOB) " +
+        String sqlDML = "INSERT INTO useraccount (username, password, firstName, lastName, gender, dob) " +
                         "VALUE (?,?,?,?,?,?)";
 
         try {

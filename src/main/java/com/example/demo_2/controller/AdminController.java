@@ -71,10 +71,10 @@ public class AdminController extends CommonController implements Initializable {
     public void search() throws SQLException {
         reset();
 
-        String queryUser = "SELECT * FROM useraccount WHERE Username LIKE '%"
+        String queryUser = "SELECT * FROM useraccount WHERE username LIKE '%"
                         + usernameSearchTextField.getText()
-                        + "%' AND (LastName LIKE '%"
-                        + nameSearchTextField.getText() + "%' OR FirstName LIKE '%"
+                        + "%' AND (lastName LIKE '%"
+                        + nameSearchTextField.getText() + "%' OR firstName LIKE '%"
                         + nameSearchTextField.getText() + "%') LIMIT 20;";
 
         PreparedStatement statement = connection.prepareStatement(queryUser);
@@ -86,13 +86,13 @@ public class AdminController extends CommonController implements Initializable {
              * get value from column in Database.
              */
             UserAccount userAccount = new UserAccount(
-                    Integer.valueOf(resultSet.getInt("UserID")),
-                    resultSet.getString("Username"),
-                    resultSet.getString("Password"),
-                    resultSet.getString("CreatedDate"),
-                    resultSet.getString("Firstname"),
-                    resultSet.getString("Lastname"),
-                    resultSet.getString("DOB")
+                    Integer.valueOf(resultSet.getInt("userID")),
+                    resultSet.getString("username"),
+                    resultSet.getString("password"),
+                    resultSet.getString("createdDate"),
+                    resultSet.getString("firstname"),
+                    resultSet.getString("lastname"),
+                    resultSet.getString("dob")
             );
             userAccountList.add(userAccount);
         }

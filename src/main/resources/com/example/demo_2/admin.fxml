@@ -44,7 +44,7 @@
                   <Font name="Verdana" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="searchButton" layoutX="508.0" layoutY="83.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" text="Search" textFill="WHITE">
+            <Button fx:id="searchButton" layoutX="505.0" layoutY="83.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" text="Search" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -59,7 +59,7 @@
                   <Font name="Verdana" size="16.0" />
                </font>
             </Label>
-            <TableView fx:id="userAccountTableView" layoutX="40.0" layoutY="126.0" prefHeight="262.0" prefWidth="539.0" style="-fx-background-color: #4Eb09B;">
+            <TableView fx:id="userAccountTableView" layoutX="37.0" layoutY="126.0" prefHeight="262.0" prefWidth="539.0" style="-fx-background-color: #4Eb09B;">
               <columns>
                 <TableColumn fx:id="userIDColumn" editable="false" maxWidth="250.0" minWidth="30.0" prefWidth="51.20001220703125" resizable="false" text="UserID" />
                 <TableColumn fx:id="usernameColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="81.0" resizable="false" text="Username" />
@@ -80,7 +80,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="resetButton" layoutX="508.0" layoutY="46.0" mnemonicParsing="false" onAction="#resetButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" text="Reset" textFill="WHITE">
+            <Button fx:id="resetButton" layoutX="505.0" layoutY="46.0" mnemonicParsing="false" onAction="#resetButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" text="Reset" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

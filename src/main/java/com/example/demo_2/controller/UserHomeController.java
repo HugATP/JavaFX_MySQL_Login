@@ -40,20 +40,20 @@ public class UserHomeController extends CommonController implements Initializabl
         }
     }
     public void loadUserInfo() throws SQLException {
-        String loadUserData = "SELECT * FROM useraccount WHERE Username = ?;";
-        PreparedStatement statement = connection.prepareStatement(loadUserData);
+        String loadUserDataQuery = "SELECT * FROM useraccount WHERE username = ?;";
+        PreparedStatement statement = connection.prepareStatement(loadUserDataQuery);
         statement.setString(1, username);
         try {
             ResultSet queryResult = statement.executeQuery();
             queryResult.next();
             // get String from column in Database
-            usernameLabel.setText(queryResult.getString("Username"));
-            firstnameLabel.setText(queryResult.getString("Firstname"));
-            lastnameLabel.setText(queryResult.getString("Lastname"));
-            fullnameTextField.setText(firstnameLabel.getText() + ' ' + lastnameLabel.getText());
-            genderLabel.setText(queryResult.getString("Gender"));
-            dobLabel.setText(queryResult.getString("DOB"));
+            usernameLabel.setText(queryResult.getString("username"));
+            firstnameLabel.setText(queryResult.getString("firstName"));
+            lastnameLabel.setText(queryResult.getString("lastName"));
+            genderLabel.setText(queryResult.getString("gender"));
+            dobLabel.setText(queryResult.getString("dob"));
 
+            fullnameTextField.setText(firstnameLabel.getText() + ' ' + lastnameLabel.getText());
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
