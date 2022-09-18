@@ -1,15 +1,20 @@
 package com.example.demo_2.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
+import java.util.ResourceBundle;
 
 public class LoginController extends CommonController {
     @FXML
@@ -44,24 +49,25 @@ public class LoginController extends CommonController {
         statement.setString(2, passwordPasswordField.getText());
 
         try {
+            System.out.println(statement);
             ResultSet queryResult = statement.executeQuery();
 
-            while (queryResult.next()) {
-                if (queryResult.getInt("userID") > 0) {
+            queryResult.next();
+            if (queryResult.getInt("userID") > 0) {
+                setUserID(queryResult.getInt("userID"));
 
-                    setUserID(queryResult.getInt("userID"));
-
-                    if(usernameTextField.getText().equals("admin")){
-                        Stage stage = (Stage) logInButton.getScene().getWindow();
-                        changeScene(stage,"admin.fxml");
-                    } else {
-                        Stage stage = (Stage) logInButton.getScene().getWindow();
-                        changeScene(stage,"userHome.fxml");
-                    }
+                if(usernameTextField.getText().equals("admin")){
+                    Stage stage = (Stage) logInButton.getScene().getWindow();
+                    changeScene(stage,"admin.fxml");
                 } else {
-                    logInMessageLabel.setText("Invalid login. Please try again");
+                    Stage stage = (Stage) logInButton.getScene().getWindow();
+                    changeScene(stage,"userHome.fxml");
                 }
+            } else {
+                System.out.println("invalid");
+                logInMessageLabel.setText("Invalid login. Please try again");
             }
+
             statement.close();
 
         } catch (SQLException e) {

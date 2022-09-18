@@ -63,7 +63,7 @@ public class SignupController extends CommonController {
     public void validateRegister() {
 
         String sqlDML = "INSERT INTO useraccount (username, password, firstName, lastName, gender, dob) " +
-                        "VALUE (?,?,?,?,?,?)";
+                        "VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sqlDML);
             statement.setString(3, firstNameTextField.getText());

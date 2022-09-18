@@ -1,0 +1,33 @@
+/* CREATE TABLE IN gameDatabase
+            String sqlDML = "CREATE TABLE useraccount (" +
+                    "  userID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "  username TEXT NOT NULL UNIQUE ," +
+                    "  password TEXT NOT NULL," +
+                    "  createdDate TEXT DEFAULT CURRENT_TIMESTAMP," +
+                    "  firstName TEXT NOT NULL," +
+                    "  lastName TEXT NOT NULL," +
+                    "  gender TEXT NOT NULL," +
+                    "  dob TEXT NOT NULL" +
+                    ");";
+
+/*String sqlDML = " CREATE TABLE gamescore (" +
+                    "                    scoreID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "                    userID INTEGER NOT NULL," +
+                    "                    score INTEGER NOT NULL," +
+                    "                    scoredTime TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP," +
+                    "                    CONSTRAINT fk_gamescore_useraccount FOREIGN KEY (userID) REFERENCES useraccount (userID) ON DELETE RESTRICT ON UPDATE CASCADE);";
+            PreparedStatement statement = databaseLink.prepareStatement(sqlDML);
+            int query = statement.executeUpdate();*/
+CREATE TABLE useraccount (userID INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL UNIQUE , password TEXT NOT NULL,createdDate TEXT DEFAULT CURRENT_TIMESTAMP, firstName TEXT NOT NULL, lastName TEXT NOT NULL,   gender TEXT NOT NULL,  dob TEXT NOT NULL );
+
+*/
+/*
+insert
+
+INSERT INTO useraccount (username, password, firstName, lastName, gender, dob) VALUES ('huong', '123', 'nguyen', 'huong', 'female', '2003-09-30');
+*/
+
+String sqlDML = "INSERT INTO useraccount (username) VALUES (?)";
+PreparedStatement statement = connection.prepareStatement(sqlDML);
+statement.setString(1, firstNameTextField.getText());
+int insertResult = statement.executeUpdate();

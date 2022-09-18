@@ -81,7 +81,7 @@ public class UserHomeController extends CommonController implements Initializabl
         scoreTextField.setText("");
     }
     public void pushData(){
-        String sqlDML = "INSERT INTO gamescore (userID, score) VALUE (?,?)";
+        String sqlDML = "INSERT INTO gamescore (userID, score) VALUES (?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sqlDML);
             statement.setString(1, String.valueOf(userID));
