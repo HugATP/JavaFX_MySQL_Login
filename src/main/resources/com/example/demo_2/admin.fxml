@@ -36,7 +36,7 @@
                     </font></Button>
                 <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="443.0" layoutY="12.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../res/img/icons8-username-64.png" />
+                        <Image url="@../img/icons8-username-64.png" />
                     </image>
                 </ImageView>
             <Label alignment="CENTER" layoutX="60.0" layoutY="4.0" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #4Eb09B;" text="User Account Control" textFill="WHITE">

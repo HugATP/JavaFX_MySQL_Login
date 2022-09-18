@@ -17,8 +17,8 @@ public class AppMain extends Application {
         Scene scene = new Scene(fxmlLoader_userhome.load(), 600, 400);
         stage.setResizable(false);
         stage.initStyle(StageStyle.UNDECORATED);
-        /*Image icon_ = new Image("@../icons8-login-64.png");
-        stage.getIcons().add(icon_);*/
+        Image icon_ = new Image("file:src/main/resources/com/example/img/icons8-login-64.png");
+        stage.getIcons().add(icon_);
         stage.setTitle("Login app");
         stage.setScene(scene);
         stage.show();

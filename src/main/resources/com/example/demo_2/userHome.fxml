@@ -35,7 +35,7 @@
                     </font></Button>
                 <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="65.0" layoutY="12.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../res/img/icons8-username-64.png" />
+                        <Image url="@../img/icons8-username-64.png" />
                     </image>
                 </ImageView>
             <GridPane gridLinesVisible="true" layoutX="22.0" layoutY="86.0" prefHeight="242.0" prefWidth="312.0">
