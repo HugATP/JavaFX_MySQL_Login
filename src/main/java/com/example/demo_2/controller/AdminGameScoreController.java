@@ -20,21 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AdminGameScoreController extends CommonController {
-    @FXML
-    private Button searchButton;
-    @FXML
-    private Button resetButton;
-    @FXML
-    private Button UACButton;
-    @FXML
-    private Button GSCButton;
-    @FXML
-    private TextField usernameSearchTextField;
-    @FXML
-    private TextField nameSearchTextField;
-
-
+public class AdminGameScoreController extends AdminCommonController {
     @FXML
     private TableView<GameScore> gameScoreTableView;
     @FXML
@@ -50,28 +36,6 @@ public class AdminGameScoreController extends CommonController {
     private TableColumn<GameScore, String> scoredTimeColumn;
     private ObservableList<GameScore> gameScoreList;
 
-
-    public void backButtonOnAction() throws IOException {
-        super.backButtonOnAction("login.fxml");
-    }
-
-    public void searchButtonOnAction() throws SQLException {
-        search();
-    }
-    public void UACButtonOnAction() throws IOException {
-        Stage stage = (Stage) UACButton.getScene().getWindow();
-        changeScene(stage, "admin_user-control.fxml");
-    }
-    public void GSCButtonOnAction() throws IOException {
-        Stage stage = (Stage) GSCButton.getScene().getWindow();
-        changeScene(stage, "admin_score-control.fxml");
-    }
-
-    public void resetButtonOnAction() {
-        usernameSearchTextField.setText("");
-        nameSearchTextField.setText("");
-        reset();
-    }
     public void reset(){
         int size = gameScoreList.size();
         for (int i = 0; i < size; i++) {
@@ -111,31 +75,9 @@ public class AdminGameScoreController extends CommonController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initialize(url, resourceBundle);
         initTable();
-
-        /**
-         * KeyPressed.
-         */
-        nameSearchTextField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                try {
-                    search();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-        usernameSearchTextField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                try {
-                    search();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
     }
-    
 
     private void initTable(){
         gameScoreList = FXCollections.observableArrayList();

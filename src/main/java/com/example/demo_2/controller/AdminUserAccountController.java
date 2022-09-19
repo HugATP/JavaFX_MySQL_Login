@@ -20,23 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AdminUserAccountController extends CommonController {
-    @FXML
-    private Button searchButton;
-    @FXML
-    private Button resetButton;
-
-    @FXML
-    private Button UACButton;
-    @FXML
-    private Button GSCButton;
-    @FXML
-    private TextField usernameSearchTextField;
-    @FXML
-    // debug
-    private TextField nameSearchTextField;
-
-
+public class AdminUserAccountController extends AdminCommonController {
     @FXML
     private TableView<UserAccount> userAccountTableView;
     @FXML
@@ -55,27 +39,6 @@ public class AdminUserAccountController extends CommonController {
     private TableColumn<UserAccount, String> DOBColumn;
     private ObservableList<UserAccount> userAccountList;
 
-
-    public void backButtonOnAction() throws IOException {
-        super.backButtonOnAction("login.fxml");
-    }
-    public void UACButtonOnAction() throws IOException {
-        Stage stage = (Stage) UACButton.getScene().getWindow();
-        changeScene(stage, "admin_user-control.fxml");
-    }
-    public void GSCButtonOnAction() throws IOException {
-        Stage stage = (Stage) GSCButton.getScene().getWindow();
-        changeScene(stage, "admin_score-control.fxml");
-    }
-
-    public void searchButtonOnAction() throws SQLException {
-        search();
-    }
-    public void resetButtonOnAction() {
-        usernameSearchTextField.setText("");
-        nameSearchTextField.setText("");
-        reset();
-    }
     public void reset(){
         int size = userAccountList.size();
         for (int i = 0; i < size; i++) {
@@ -112,33 +75,12 @@ public class AdminUserAccountController extends CommonController {
         }
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initialize(url, resourceBundle);
         initTable();
-
-        /**
-         * KeyPressed.
-         */
-        nameSearchTextField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                try {
-                    search();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-        usernameSearchTextField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                try {
-                    search();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
     }
-    
 
     private void initTable(){
         userAccountList = FXCollections.observableArrayList();
