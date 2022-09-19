@@ -6,3 +6,8 @@
     -fx-cursor: hand;
     -fx-opacity : 0.7;
 }
+
+.btn_menu:hover {
+    -fx-cursor: hand;
+    -fx-opacity : 0.7;
+}

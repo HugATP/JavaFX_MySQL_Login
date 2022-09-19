@@ -14,15 +14,12 @@
 <!-- 4EB09B green theme background color is using-->
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo_2.controller.AdminUserAccountController">
-    <left>
-        <AnchorPane prefHeight="400.0" prefWidth="103.0" style="-fx-background-color: #4Eb09B;" BorderPane.alignment="CENTER" />
-    </left>
-   <top>
-        <AnchorPane prefHeight="400.0" prefWidth="408.0" BorderPane.alignment="CENTER">
+    <top>
+        <AnchorPane prefHeight="121.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
                 <Label alignment="CENTER" layoutX="438.0" layoutY="9.0" prefHeight="20.0" prefWidth="158.0" text="Admin">
                     <font>
-                        <Font name="Verdana" size="16.0" />
+                        <Font size="16.0" />
                     </font>
                     <graphic>
                         <ImageView fitHeight="30.0" fitWidth="25.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
@@ -32,68 +29,74 @@
                         </ImageView>
                     </graphic>
                 </Label>
-                <Button fx:id="backButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="&lt;" textFill="WHITE">
+                <Button fx:id="backButton" layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" styleClass="btn" stylesheets="@../css/Button.css" text="&lt;" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="quitButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="566.0" layoutY="3.0" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="x" textFill="WHITE">
+                <Button fx:id="quitButton" layoutX="566.0" layoutY="3.0" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" styleClass="btn" stylesheets="@../css/Button.css" text="x" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Button>
 
-            <Button fx:id="searchButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="505.0" layoutY="83.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" text="Search" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Label alignment="CENTER" layoutX="6.0" layoutY="50.0" prefHeight="20.0" prefWidth="208.0" text="Username">
-               <font>
-                  <Font name="Verdana" size="16.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="238.0" layoutY="50.0" prefHeight="20.0" prefWidth="208.0" text="Name">
-               <font>
-                  <Font name="Verdana" size="16.0" />
-               </font>
-            </Label>
-            <TableView fx:id="userAccountTableView" layoutX="37.0" layoutY="126.0" prefHeight="262.0" prefWidth="539.0" style="-fx-background-color: #4Eb09B;">
-              <columns>
-                <TableColumn fx:id="userIDColumn" editable="false" maxWidth="250.0" minWidth="30.0" prefWidth="51.20001220703125" resizable="false" text="UserID" />
-                <TableColumn fx:id="usernameColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="81.0" resizable="false" text="Username" />
-                  <TableColumn fx:id="passwordColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="81.0" resizable="false" text="Password" />
-                  <TableColumn fx:id="createdDateColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="81.0" text="CreatedDate" />
-                  <TableColumn fx:id="firstNameColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="81.0" resizable="false" text="First name" />
-                  <TableColumn fx:id="lastNameColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="81.0" text="Last name" />
-                  <TableColumn fx:id="DOBColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="81.0" text="DOB" />
-              </columns>
-            </TableView>
-            <TextField fx:id="usernameSearchTextField" layoutX="63.0" layoutY="83.0" promptText="Username">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="nameSearchTextField" layoutX="315.0" layoutY="83.0" promptText="Name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <Button fx:id="resetButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="505.0" layoutY="46.0" mnemonicParsing="false" onAction="#resetButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" text="Reset" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-                <Button fx:id="UACButton" layoutX="47.0" layoutY="4.0" mnemonicParsing="false" onAction="#UACButtonOnAction" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #4Eb09B;" styleClass="btn" stylesheets="@../css/Button.css" text="User Account Control" textFill="WHITE">
+                <Button fx:id="searchButton" layoutX="494.0" layoutY="83.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" styleClass="btn" stylesheets="@../css/Button.css" text="Search" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Button fx:id="GSCButton" layoutX="238.0" layoutY="4.0" mnemonicParsing="false" onAction="#GSCButtonOnAction" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #4Eb09B;" styleClass="btn" stylesheets="@../css/Button.css" text="Game Score Control" textFill="WHITE">
+                <Label alignment="CENTER" layoutX="-23.0" layoutY="50.0" prefHeight="20.0" prefWidth="208.0" text="Username">
+                    <font>
+                        <Font name="Verdana" size="16.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="202.0" layoutY="52.0" prefHeight="20.0" prefWidth="208.0" text="Name">
+                    <font>
+                        <Font name="Verdana" size="16.0" />
+                    </font>
+                </Label>
+
+                <TextField fx:id="usernameSearchTextField" layoutX="40.0" layoutY="83.0" promptText="Username">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="nameSearchTextField" layoutX="281.0" layoutY="85.0" promptText="Name">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </TextField>
+                <Button fx:id="resetButton" layoutX="494.0" layoutY="46.0" mnemonicParsing="false" onAction="#resetButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" styleClass="btn" stylesheets="@../css/Button.css" text="Reset" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <Button fx:id="UACButton" layoutX="43.0" layoutY="3.0" mnemonicParsing="false" onAction="#UACButtonOnAction" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #ddd;" styleClass="btn_menu" stylesheets="@../css/Button.css" text="User Account Control" textFill="#4eb09b">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <Button fx:id="GSCButton" layoutX="186.0" layoutY="3.0" mnemonicParsing="false" onAction="#GSCButtonOnAction" prefHeight="30.0" prefWidth="134.0" style="-fx-background-color: #ddd;" styleClass="btn_menu" stylesheets="@../css/Button.css" text="Game Score Control" textFill="#309c88">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
             </children>
         </AnchorPane>
-   </top>
+    </top>
+   <center>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="280.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+                <TableView fx:id="userAccountTableView" layoutX="40.0" layoutY="5.0" prefHeight="262.0" prefWidth="526.0" style="-fx-background-color: #4Eb09B;">
+                    <columns>
+                        <TableColumn fx:id="userIDColumn" editable="false" maxWidth="250.0" minWidth="30.0" prefWidth="45.60000228881836" resizable="false" style="-fx-background-color: #fff;" text="UserID" />
+                        <TableColumn fx:id="usernameColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="82.9333267211914" resizable="false" style="-fx-background-color: #fff;" text="Username" />
+                        <TableColumn fx:id="passwordColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="82.66667175292969" resizable="false" style="-fx-background-color: #fff;" text="Password" />
+                        <TableColumn fx:id="createdDateColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="86.93331909179688" style="-fx-background-color: #fff;" text="CreatedDate" />
+                        <TableColumn fx:id="firstNameColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="75.73336791992188" resizable="false" style="-fx-background-color: #fff;" text="First name" />
+                        <TableColumn fx:id="lastNameColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="80.53329467773438" resizable="false" style="-fx-background-color: #fff;" text="Last name" />
+                        <TableColumn fx:id="DOBColumn" editable="false" maxWidth="250.0" minWidth="50.0" prefWidth="73.60002441406255" style="-fx-background-color: #fff;" text="DOB" />
+                    </columns>
+                </TableView>
+         </children></AnchorPane>
+   </center>
 </BorderPane>
