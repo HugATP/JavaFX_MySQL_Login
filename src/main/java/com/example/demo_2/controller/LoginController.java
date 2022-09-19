@@ -3,11 +3,13 @@ package com.example.demo_2.controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -28,17 +30,42 @@ public class LoginController extends CommonController {
     @FXML
     private PasswordField passwordPasswordField;
 
-    public void signUpButtonOnAction(ActionEvent e) throws IOException {
+    public void signUpButtonOnAction() throws IOException {
         Stage stage = (Stage) signUpButton.getScene().getWindow();
         changeScene(stage, "signup.fxml");
     }
 
-    public void logInButtonOnAction(ActionEvent e) throws SQLException {
+    public void logInButtonOnAction() throws SQLException {
         if(usernameTextField.getText().isBlank() || passwordPasswordField.getText().isBlank()) {
             logInMessageLabel.setText("Please enter username and password");
         } else {
             validatelogIn();
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        /**
+         * KeyPressed.
+         */
+        passwordPasswordField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                try {
+                    logInButtonOnAction();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        usernameTextField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                try {
+                    logInButtonOnAction();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
     public void validatelogIn() throws SQLException {
@@ -58,7 +85,7 @@ public class LoginController extends CommonController {
 
                 if(usernameTextField.getText().equals("admin")){
                     Stage stage = (Stage) logInButton.getScene().getWindow();
-                    changeScene(stage,"admin.fxml");
+                    changeScene(stage,"admin_score-control.fxml");
                 } else {
                     Stage stage = (Stage) logInButton.getScene().getWindow();
                     changeScene(stage,"userHome.fxml");

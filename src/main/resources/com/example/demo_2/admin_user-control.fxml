@@ -13,17 +13,24 @@
 
 <!-- 4EB09B green theme background color is using-->
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo_2.controller.AdminController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo_2.controller.AdminUserAccountController">
     <left>
         <AnchorPane prefHeight="400.0" prefWidth="103.0" style="-fx-background-color: #4Eb09B;" BorderPane.alignment="CENTER" />
     </left>
    <top>
         <AnchorPane prefHeight="400.0" prefWidth="408.0" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" layoutX="427.0" layoutY="14.0" prefHeight="20.0" prefWidth="158.0" text="Admin">
+                <Label alignment="CENTER" layoutX="438.0" layoutY="9.0" prefHeight="20.0" prefWidth="158.0" text="Admin">
                     <font>
                         <Font name="Verdana" size="16.0" />
                     </font>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="25.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/icons8-username-64.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Label>
                 <Button fx:id="backButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #4Eb09B;" text="&lt;" textFill="WHITE">
                     <font>
@@ -34,16 +41,7 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Button>
-                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="443.0" layoutY="12.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../img/icons8-username-64.png" />
-                    </image>
-                </ImageView>
-            <Label alignment="CENTER" layoutX="60.0" layoutY="4.0" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #4Eb09B;" text="User Account Control" textFill="WHITE">
-               <font>
-                  <Font name="Verdana" size="16.0" />
-               </font>
-            </Label>
+
             <Button fx:id="searchButton" styleClass="btn" stylesheets="@../css/Button.css" layoutX="505.0" layoutY="83.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #4Eb09B;" text="Search" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -85,6 +83,16 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+                <Button fx:id="UACButton" layoutX="47.0" layoutY="4.0" mnemonicParsing="false" onAction="#UACButtonOnAction" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #4Eb09B;" styleClass="btn" stylesheets="@../css/Button.css" text="User Account Control" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <Button fx:id="GSCButton" layoutX="238.0" layoutY="4.0" mnemonicParsing="false" onAction="#GSCButtonOnAction" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #4Eb09B;" styleClass="btn" stylesheets="@../css/Button.css" text="Game Score Control" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
             </children>
         </AnchorPane>
    </top>

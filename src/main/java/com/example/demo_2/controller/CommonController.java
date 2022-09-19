@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -42,11 +44,11 @@ public class CommonController implements Initializable {
         stage.show();
 
     }
-    public void quitButtonOnAction(ActionEvent e) {
+    public void quitButtonOnAction() {
         Stage stage = (Stage) quitButton.getScene().getWindow();
         stage.close();
     }
-    public void backButtonOnAction(ActionEvent e, String path) throws IOException {
+    public void backButtonOnAction(String path) throws IOException {
         Stage stage = (Stage) backButton.getScene().getWindow();
         changeScene(stage, path);
     }
@@ -55,4 +57,6 @@ public class CommonController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+
 }

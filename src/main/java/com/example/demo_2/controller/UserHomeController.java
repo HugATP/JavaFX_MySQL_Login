@@ -38,8 +38,8 @@ public class UserHomeController extends CommonController implements Initializabl
     private TextField scoreTextField;
     @FXML
     private Button pushButton;
-    public void backButtonOnAction(ActionEvent e) throws IOException {
-        super.backButtonOnAction(e, "login.fxml");
+    public void backButtonOnAction() throws IOException {
+        super.backButtonOnAction("login.fxml");
     }
 
     @Override
@@ -49,6 +49,11 @@ public class UserHomeController extends CommonController implements Initializabl
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        scoreTextField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                pushButtonOnAction();
+            }
+        });
     }
 
     public void loadUserInfo() throws SQLException {
@@ -72,11 +77,7 @@ public class UserHomeController extends CommonController implements Initializabl
         }
     }
 
-    public void scoreTextFieldOnAction(ActionEvent e) {
-
-    }
-
-    public void pushButtonOnAction(ActionEvent e) {
+    public void pushButtonOnAction() {
         pushData();
         scoreTextField.setText("");
     }

@@ -35,8 +35,8 @@ public class SignupController extends CommonController {
     private DatePicker dobDatePicker;
 
 
-    public void backButtonOnAction(ActionEvent e) throws IOException {
-        super.backButtonOnAction(e, "login.fxml");
+    public void backButtonOnAction() throws IOException {
+        super.backButtonOnAction("login.fxml");
     }
 
     @Override
@@ -45,7 +45,7 @@ public class SignupController extends CommonController {
     }
 
 
-    public void registerButtonOnAction(ActionEvent e) throws IOException, InterruptedException {
+    public void registerButtonOnAction() throws IOException, InterruptedException {
         if(usernameTextField.getText().isBlank()
             || passwordPasswordField.getText().isBlank()
             || lastNameTextField.getText().isBlank()

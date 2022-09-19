@@ -3,7 +3,6 @@ package com.example.demo_2.controller;
 import com.example.demo_2.UserAccount;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,6 +10,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,11 +20,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AdminController extends CommonController implements Initializable {
+public class AdminUserAccountController extends CommonController {
     @FXML
     private Button searchButton;
     @FXML
     private Button resetButton;
+
+    @FXML
+    private Button UACButton;
+    @FXML
+    private Button GSCButton;
     @FXML
     private TextField usernameSearchTextField;
     @FXML
@@ -50,11 +56,19 @@ public class AdminController extends CommonController implements Initializable {
     private ObservableList<UserAccount> userAccountList;
 
 
-    public void backButtonOnAction(ActionEvent e) throws IOException {
-        super.backButtonOnAction(e, "login.fxml");
+    public void backButtonOnAction() throws IOException {
+        super.backButtonOnAction("login.fxml");
+    }
+    public void UACButtonOnAction() throws IOException {
+        Stage stage = (Stage) UACButton.getScene().getWindow();
+        changeScene(stage, "admin_user-control.fxml");
+    }
+    public void GSCButtonOnAction() throws IOException {
+        Stage stage = (Stage) GSCButton.getScene().getWindow();
+        changeScene(stage, "admin_score-control.fxml");
     }
 
-    public void searchButtonOnAction(ActionEvent e) throws SQLException {
+    public void searchButtonOnAction() throws SQLException {
         search();
     }
     public void resetButtonOnAction() {
@@ -100,6 +114,33 @@ public class AdminController extends CommonController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initTable();
+
+        /**
+         * KeyPressed.
+         */
+        nameSearchTextField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                try {
+                    search();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        usernameSearchTextField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                try {
+                    search();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+    
+
+    private void initTable(){
         userAccountList = FXCollections.observableArrayList();
 
         /**
